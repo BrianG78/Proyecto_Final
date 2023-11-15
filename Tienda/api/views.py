@@ -24,6 +24,14 @@ class Signup(APIView):
 class Index(APIView):
    template_name='index.html'
    def get(self,request):
-       return render(request,self.template_name)      
+       return render(request,self.template_name)
+   
+class stats(APIView):
+   template_name='stats.html'
+   def get(self,request):
+       return render(request,self.template_name)     
+     
+   
+     
    
    
