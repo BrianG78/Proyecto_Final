@@ -1,3 +1,4 @@
+{% load static  %}
 <!doctype html>
 <html lang="en">
 
@@ -6,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="../css/spur.css">
+    <link rel="stylesheet" href="{% static 'css/spur.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
-    <script src="../js/chart-js-config.js"></script>
+    <script src="{% static 'js/chart-js-config.js' %}"></script>
     <title>Spur - A Bootstrap Admin Template</title>
 </head>
 
@@ -115,37 +116,29 @@
                                     </div>
                                     <div class="spur-card-title">Default table</div>
                                 </div>
+                                <div align="right"><input type="text" class="form-control form-control-lg" id="buscarInput" placeholder="Buscar..."></div>
                                 <div class="card-body ">
-                                    <table class="table table-in-card">
+                                    <table class="table table-in-card" id="miTabla">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">First</th>
-                                                <th scope="col">Last</th>
-                                                <th scope="col">Handle</th>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Apellido</th>
+                                                <th scope="col">Email</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            {% for usuario in usuarios %}
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
+                                                <th scope="row">{{ usuario.id }}</th>
+                                                <td>{{ usuario.first_name }}</td>
+                                                <td>{{ usuario.last_name }}</td>
+                                                <td>{{ usuario.email }}</td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
-                                            </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
+                                    <button class="btn d-block w-100 btn-success text-white" id="exportarExcel">Exportar a Excel</button>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +278,43 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="../js/spur.js"></script>
+    <script src="../js/spur.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script>
+    //Filtro
+    function filtrarTabla() {
+        var input, filter, table, tr, td, i, j, txtValue;
+        input = document.getElementById("buscarInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("miTabla");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 1; i < tr.length; i++) {
+        tr[i].style.display = "none";
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+            if (td[j]) {
+            txtValue = td[j].textContent || td[j].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                break;
+            }
+            }
+        }
+        }
+    }
+
+    //Aqui exporta al excel
+    function exportarExcel() {
+        var tabla = document.getElementById("miTabla");
+        var libro = XLSX.utils.table_to_book(tabla);
+        XLSX.writeFile(libro, "tabla.xlsx");
+    }
+
+    //Eventos
+    document.getElementById("buscarInput").addEventListener("keyup", filtrarTabla);
+    document.getElementById("exportarExcel").addEventListener("click", exportarExcel);
+    </script>
 </body>
 
 </html>
