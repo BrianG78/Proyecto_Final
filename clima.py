@@ -16,7 +16,7 @@ try:
     longitud = res.json()["coord"]["lon"]
     descripcion = res.json()["weather"][0]["description"]
 
-    print("Temperatura: ", temp)
+    print("Temperatura : ", temp)
     print("Velocidad del viento: {} m/s".format(vel_viento))
     print("Latitud: {}".format(latitud))
     print("Longitud: {}".format(longitud))
