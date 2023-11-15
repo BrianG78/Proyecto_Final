@@ -15,15 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api.views import  Login, Signup,Index,stats
+from api.views import Home, stats, tables, forgot
+
+from api import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
   
-    path('',Login.as_view(),name='Login'),
-    path('Signup',Signup.as_view(),name='Signup'),
-    path('Index',Index.as_view(),name='index'),
-    path('login',Login.as_view(),name='login'),
-    path('Stats',stats.as_view(),name='Stats'),
-    
+    path('',Home.as_view(),name='index'),
+    path('signup/',views.signup,name='signup'),
+    path('signin/',views.signin,name='signin'),
+    path('stats/',stats.as_view(),name='stats'),
+    path('tables/',tables.as_view(),name='tables'),
+    path('forgot/',views.forgotPwd,name='forgot'),
+    path('logout/',views.signout,name='logout'),
+    path('enviar_correo/<str:correo>/<str:contra>/', views.enviar_correo, name='enviar_correo'),
+        
 ]
