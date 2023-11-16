@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['proyecto-hd31.onrender.com', '*']
+
 
 DEBUG = 'RENDER' not in os.environ
 
@@ -34,15 +35,6 @@ if not DEBUG:
     # in your application directory on Render.
     STATIC_ROOT = BASE_DIR / 'api/static'
     
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-# Verifica el valor de RENDER_EXTERNAL_HOSTNAME
-print(f"RENDER_EXTERNAL_HOSTNAME: {RENDER_EXTERNAL_HOSTNAME}")
-
-# Verifica el valor de ALLOWED_HOSTS
-print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
     
 
 
