@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 ALLOWED_HOSTS = ["*"]
 
 
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 if not DEBUG:
     # Tell Django to copy statics to the `staticfiles` directory
