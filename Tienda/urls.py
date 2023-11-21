@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api.views import Home, stats, tables, forgot
+from api.views import Home, stats, tables, forgot ,ChartJSView
 
 from api import views
+from api.views import ChartJSView
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -29,6 +30,9 @@ urlpatterns = [
     path('tables/',tables.as_view(),name='tables'),
     path('forgot/',views.forgotPwd,name='forgot'),
     path('logout/',views.signout,name='logout'),
+    path('chartjs/', ChartJSView.as_view(), name='chartjs'),
+    path('weather/', views.weather, name='weather'),
+    # ...
     path('enviar_correo/<str:correo>/<str:contra>/', views.enviar_correo, name='enviar_correo'),
         
 ]

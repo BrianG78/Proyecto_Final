@@ -8,9 +8,14 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.db import IntegrityError
 from django.template.loader import render_to_string
+from django.http import HttpResponse
+from django.shortcuts import render
+from pprint import pprint
 
+import requests
 import secrets
 import string
+from django.views import View
 
 
 
@@ -20,6 +25,37 @@ import string
 #    template_name='index.html'
 #    def get(self,request):
 #        return render(request,self.template_name)
+def weather(request):
+    if request.method == 'POST':
+        city = request.POST['city']
+        url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid=1b81cdba152c5dc5d951066295360d1e".format(city)
+
+        res = requests.get(url)
+
+        try:
+            temp = res.json()["main"]["temp"]
+            vel_viento = res.json()["wind"]["speed"]
+            latitud = res.json()["coord"]["lat"]
+            longitud = res.json()["coord"]["lon"]
+            descripcion = res.json()["weather"][0]["description"]
+            
+            tempo = round(temp - 273.15, 1)
+
+            context = {
+                'temp': "Temperatura:"+ str(tempo)+"°C",
+                'vel_viento': "Velocidad del viento:"+ str(vel_viento)+"m/s",
+                'latitud': "Latitud:"+ str(latitud),
+                'longitud': "Longitud:"+ str(longitud),
+                'descripcion': "Descripción:"+ str(descripcion),
+            }
+
+            return render(request, 'weather.html', context)
+
+        except KeyError as e:
+            error_message = "Error: Clave no encontrada - {}".format(e)
+            return render(request, 'weather/error.html', {'error_message': error_message})
+
+    return render(request, 'weather.html')
 
 def signin(request):
     if request.method == 'GET':
@@ -80,7 +116,11 @@ class stats(APIView):
    template_name='stats.html'
    def get(self,request):
        return render(request,self.template_name)
-   
+class ChartJSView(View):  # Cambia el nombre de la clase y hereda de View
+    template_name = 'chartjs.html'
+
+    def get(self, request):
+        return render(request, self.template_name) 
 class forgot(APIView):
    template_name='correo_recuperacion.html'
    def get(self,request):
