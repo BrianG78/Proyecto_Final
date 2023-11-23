@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'Tienda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'proyecto_asod',
@@ -99,8 +99,13 @@ DATABASES = {
         'HOST': 'oregon-postgres.render.com', # Puede ser una dirección IP o un nombre de host
         'PORT': '5432', # Deja en blanco para usar el puerto predeterminado (5432)
     }
+} """
+DATABASES = {
+    'default':{
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
-
 
 
 # Password validation
