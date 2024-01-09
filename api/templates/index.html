@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/spur.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="{% static 'js/chart-js-config.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <title>Express Party</title>
 </head>
 
@@ -91,150 +92,43 @@
                     </div>
                 </div>
             </header>
-            <main class="dash-content">
-                <div class="container-fluid">
-                    <div class="row dash-row">
-                        <div class="col-xl-4">
-                            <div class="stats stats-primary">
-                                <h3 class="stats-title"> Nuevos Usuarios </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">114</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+25%</span>
-                                            <span class="stats-timeframe">Ultimo mes </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="stats stats-success ">
-                                <h3 class="stats-title"> Ingresos </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-cart-arrow-down"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">$25,541</div>
-                                        <div class="stats-change">
-                                            <span class="stats-percentage">+17.5%</span>
-                                            <span class="stats-timeframe">ultimo mes </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="stats stats-danger">
-                                <h3 class="stats-title"> Llamadas </h3>
-                                <div class="stats-content">
-                                    <div class="stats-icon">
-                                        <i class="fas fa-phone"></i>
-                                    </div>
-                                    <div class="stats-data">
-                                        <div class="stats-number">5</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card spur-card">
-                                <div class="card-header">
-                                    <div class="spur-card-icon">
-                                        <i class="fas fa-chart-bar"></i>
-                                    </div>
-                                    <div class="spur-card-title"> Contrataciones </div>
-                                    <div class="spur-card-menu">
-                                        <div class="dropdown show">
-                                            <a class="spur-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body spur-card-body-chart">
-                                    <canvas id="spurChartjsBar"></canvas>
-                                    <script>
-                                        var ctx = document.getElementById("spurChartjsBar").getContext('2d');
-                                        var myChart = new Chart(ctx, {
-                                            type: 'bar',
-                                            data: {
-                                                labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                                                datasets: [{
-                                                    label: 'Blue',
-                                                    data: [12, 19, 3, 5, 2],
-                                                    backgroundColor: window.chartColors.primary,
-                                                    borderColor: 'transparent'
-                                                }]
-                                            },
-                                            options: {
-                                                legend: {
-                                                    display: false
-                                                },
-                                                scales: {
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            beginAtZero: true
-                                                        }
-                                                    }]
-                                                }
-                                            }
-                                        });
-                                    </script>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="card spur-card">
-                                <div class="card-header">
-                                    <div class="spur-card-icon">
-                                        <i class="fas fa-bell"></i>
-                                    </div>
-                                    <div class="spur-card-title"> Notifications </div>
-                                </div>
-                                <div class="card-body ">
-                                    <div class="notifications">
-                                        <a href="#!" class="notification">
-                                            <div class="notification-icon">
-                                                <i class="fas fa-inbox"></i>
-                                            </div>
-                                            <div class="notification-text">Boda Natalia</div>
-                                            <span class="notification-time">7 days ago</span>
-                                        </a>
-                                        <a href="#!" class="notification">
-                                            <div class="notification-icon">
-                                                <i class="fas fa-inbox"></i>
-                                            </div>
-                                            <div class="notification-text">Cumpleaños Israel</div>
-                                            <span class="notification-time">15 days ago</span>
-                                        </a>
-                                        <a href="#!" class="notification">
-                                            <div class="notification-icon">
-                                                <i class="fas fa-inbox"></i>
-                                            </div>
-                                            <div class="notification-text">XV años Jhoana</div>
-                                            <span class="notification-time">21 days ago</span>
-                                        </a>
-                                        <div class="notifications-show-all">
-                                            <a href="#!">Show all</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
+            <div class="title-cards">
+                <h2>Servicios que Ofrecemos</h2>
+            </div>
+        <div class="container-card">
+            
+        <div class="card">
+            <figure>
+                <img src="https://img.freepik.com/fotos-premium/chico-tres-chicas-alegran-celebran-fiesta-club-nocturno_74906-1591.jpg?size=626&ext=jpg">
+            </figure>
+            <div class="contenido-card">
+                <h3>Salones de Fiesta</h3>
+                <p>"Transforma tus eventos en experiencias memorables con nuestros salones de fiestas. 
+                    Desde bodas hasta celebraciones corporativas, ofrecemos espacios versátiles y servicios excepcionales para cada ocasión.
+                     .</p>
+                <a href="https://www.salondefiestaskalesh.com.mx/">Leer Màs</a>
+            </div>
+        </div>
+        <div class="card">
+            <figure>
+                <img src="https://colmayorbolivar.edu.co/blog/wp-content/uploads/2017/06/imagen-administracion.jpg">
+            </figure>
+            <div class="contenido-card">
+                <h3>Gestión de Redes</h3>
+                <p>Nosotros creamos y optimizamos tus perfiles en las Redes Sociales. Importantes para que tu presencia online sea completa.</p>
+                <a href="#">Leer Màs</a>
+            </div>
+        </div>
+        <div class="card">
+            <figure>
+                <img src="https://image.freepik.com/foto-gratis/desarrollo-programadores-desarrollo-tecnologias-diseno-codificacion-sitios-web_18497-1090.jpg">
+            </figure>
+            <div class="contenido-card">
+                <h3>Desarrollo Web</h3>
+                <p>Creamos tu página web utilizando las últimas tecnologías disponibles. Una Web adaptativa a tu móvil o Tablet y con un gestor de contenido fácil.</p>
+                <a href="#">Leer Màs</a>
+            </div>
+        </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
