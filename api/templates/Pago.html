@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago con Mercado Pago</title>
+
+    <!-- Incluye el script de Mercado Pago -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+
+<body>
+    <h3>Mercado Pago</h3>
+
+    <!-- Agrega un contenedor para el botón de pago -->
+    <div id="checkout-btn"></div>
+
+    <script>
+        // Configura Mercado Pago con tu clave de prueba
+        const mp = new MercadoPago('Aqui va tu public key', {
+            locale: 'es-MX'
+        });
+        const bricksBuilder = mp.bricks();
+    
+        bricksBuilder.create("wallet", "checkout-btn", {
+            initialization: {
+                preferenceId: "{{ PREFERENCE_ID }}",
+            },
+            customization: {
+                texts: {
+                    valueProp: 'smart_option',
+                },
+            },
+        });
+    </script>
+    
+</body>
+
+</html>

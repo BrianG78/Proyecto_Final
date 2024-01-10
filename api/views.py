@@ -116,6 +116,7 @@ class stats(APIView):
    template_name='stats.html'
    def get(self,request):
        return render(request,self.template_name)
+   
 class ChartJSView(View):  # Cambia el nombre de la clase y hereda de View
     template_name = 'chartjs.html'
 
@@ -124,8 +125,7 @@ class ChartJSView(View):  # Cambia el nombre de la clase y hereda de View
 class forgot(APIView):
    template_name='correo_recuperacion.html'
    def get(self,request):
-       return render(request,self.template_name)     
-     
+       return render(request,self.template_name)        
 def enviar_correo(request, correo, contra):
     subject = 'Bienvenida'
     from_email = 'brayanhack28@gmail.com'
