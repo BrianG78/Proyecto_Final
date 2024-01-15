@@ -30,7 +30,6 @@ urlpatterns = [
     path('tables/',tables.as_view(),name='tables'),
     path('forgot/',views.forgotPwd,name='forgot'),
     path('logout/',views.signout,name='logout'),
-  
     
     path('chartjs/', ChartJSView.as_view(), name='chartjs'),
     path('weather/', views.weather, name='weather'),

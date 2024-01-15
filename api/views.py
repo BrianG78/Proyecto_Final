@@ -117,6 +117,11 @@ class stats(APIView):
    def get(self,request):
        return render(request,self.template_name)
    
+   class forms(APIView):
+    template_name='forms.html'
+   def get(self,request):
+       return render(request,self.template_name)
+   
 class ChartJSView(View):  # Cambia el nombre de la clase y hereda de View
     template_name = 'chartjs.html'
 

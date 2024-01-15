@@ -33,23 +33,23 @@
                     <i class="fas fa-home"></i> Inicio </a>
                 <div class="dash-nav-dropdown">
                     <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
-                        <i class="fas fa-chart-bar"></i> Servicios 1</a>
+                        <i class="fas fa-chart-bar"></i> Servicios</a>
                     <div class="dash-nav-dropdown-menu">
                         <!-- base.html o cualquier otra plantilla -->
-                            <a href="{% url 'chartjs' %}" class="dash-nav-dropdown-item">Salones de fiestas.</a>
+                            <a href="{% url 'chartjs' %}" class="dash-nav-dropdown-item">Salones.</a>
                             <a href="{% url 'chartjs' %}" class="dash-nav-dropdown-item">Fotografos</a>
                             <a href="{% url 'chartjs' %}" class="dash-nav-dropdown-item">Entretenimiento</a>
-                            <a href="{% url 'tables' %}" class="dash-nav-dropdown-item">Tables</a>
+                            
 
 
                     </div>
                 </div>
                 <div class="dash-nav-dropdown ">
                     <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
-                        <i class="fas fa-cube"></i> Pagos y Cita </a>
+                        <i class="fas fa-cube"></i> Pagos</a>
                     <div class="dash-nav-dropdown-menu">
                         <a href="{% url 'stats' %}" class="dash-nav-dropdown-item">Pago</a>
-                        <a href="forms.html" class="dash-nav-dropdown-item">Reservaciones</a>
+                       
                         <a href="{% url 'weather' %}" class="dash-nav-dropdown-item">Clima</a>
 
                         
@@ -59,8 +59,9 @@
                
                 <div class="dash-nav-dropdown">
                     <a href="#!" class="dash-nav-item dash-nav-dropdown-toggle">
-                        <i class="fas fa-info"></i> Codigo Fuente </a>
+                        <i class="fas fa-info"></i> Contacto</a>
                     <div class="dash-nav-dropdown-menu">
+                        <a href="{% url 'tables' %}" class="dash-nav-dropdown-item">Contacto</a>
                         <a href="https://github.com/BrianG78/Proyecto_Final" target="_blank" class="dash-nav-dropdown-item">GitHub</a>
                     </div>
                 </div>
@@ -95,10 +96,12 @@
                         </div>
                     </div>
                 </div>
+                
             </header>
             <div class="title-cards">
                 <h2>Servicios que Ofrecemos</h2>
             </div>
+            
         <div class="container-card">
             
         <div class="card">
