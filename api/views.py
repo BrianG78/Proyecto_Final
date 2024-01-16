@@ -28,7 +28,7 @@ from django.views import View
 def weather(request):
     if request.method == 'POST':
         city = request.POST['city']
-        url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid=1b81cdba152c5dc5d951066295360d1e".format(city)
+        url = "http://api.openweathermap.org/data/2.5/weather?q={}&appid=77afa56844bea39aa23582127ed1f0ac".format(city)
 
         res = requests.get(url)
 
@@ -117,10 +117,8 @@ class stats(APIView):
    def get(self,request):
        return render(request,self.template_name)
    
-   class forms(APIView):
-    template_name='forms.html'
-   def get(self,request):
-       return render(request,self.template_name)
+   
+   
    
 class ChartJSView(View):  # Cambia el nombre de la clase y hereda de View
     template_name = 'chartjs.html'
