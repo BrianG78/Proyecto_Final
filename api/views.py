@@ -157,6 +157,7 @@ def forgotPwd(request):
             if user.exists():
                 user = user[0]
                 user.set_password(contra_aleatoria)
+                user.save()
             # Defines variables para que posteriormente las mandes por una mamada de link inverso xd a la clase que manda el correo
             correo = request.POST['email']
             # Igual aqui a contra le mandas el valor de la cadena generada automaticamente
